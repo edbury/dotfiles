@@ -13,20 +13,36 @@
         command: if [ "$(uname)" = "Darwin" ]; then /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; fi
         description: checking for darwin then installing homebrew
     -
+      command: (cd config/base16-shell && git reset --hard)
+      description: reset custom scheme
+    -
       command: git submodule update --init --recursive
       description: installing/updating submodules
+    -
+      command: cp base16-alucard.sh config/base16-shell/scripts/base16-dracula.sh
+      description: copy alucard scheme
 - link:
     ~/.config/base16-shell:
         path: config/base16-shell
     ~/.config/karabiner/karabiner.json:
         path: config/karabiner/karabiner.json
     ~/.gitignore_global:
+    ~/.taskrc:
     ~/.task/hooks/on-exit-sync.sh:
         path: task/hooks/on-exit-sync.sh
     ~/.vim:
     ~/.vimrc:
     ~/.zshrc:
 - shell:
+    -
+        command: (cd vim/plugged/base16-vim && git reset --hard)
+        description: reset vim theme for update
+    -
+        command: vim -c ':PlugUpdate | :q | :q'
+        description: installing vim plugins
+    -
+        command: cp base16-alucard.vim vim/plugged/base16-vim/colors/base16-dracula.vim
+        description: put alucard syntax in place
     -
         command: curl -L git.io/antigen > antigen.zsh
         description: installing/updating antigen

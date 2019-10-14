@@ -15,17 +15,8 @@ call plug#begin('~/.vim/plugged')
 
 " list plugins here - make sure you use single quotes
 
-" base16-vim - base16 schemes :: https://github.com/chriskempson/base16-vim
-Plug 'chriskempson/base16-vim'
-
-" base16-vim-lightline - base16 schemes for lightline :: https://github.com/mike-hearn/base16-vim-lightline
-Plug 'mike-hearn/base16-vim-lightline'
-
 " sensible.vim - some non-controversial defaults :: https://github.com/tpope/vim-sensible
 Plug 'tpope/vim-sensible'
-
-" lightline.vim - a light statusline/tabline :: https://github.com/itchyny/lightline.vim
-Plug 'itchyny/lightline.vim'
 
 " NERDTree - file system explorer :: https://github.com/scrooloose/nerdtree
 Plug 'scrooloose/nerdtree'
@@ -59,6 +50,16 @@ Plug 'mbbill/undotree'
 
 " vim-taskwarrior - a vim interface for taskwarrior :: https://github.com/blindfs/vim-taskwarrior
 Plug 'blindfs/vim-taskwarrior'
+
+" lightline.vim - a light statusline/tabline :: https://github.com/itchyny/lightline.vim
+Plug 'itchyny/lightline.vim'
+
+" base16-vim - base16 schemes :: https://github.com/chriskempson/base16-vim
+
+Plug 'chriskempson/base16-vim'
+
+" base16-vim-lightline - base16 schemes for lightline :: https://github.com/mike-hearn/base16-vim-lightline
+Plug 'mike-hearn/base16-vim-lightline'
 
 " initialize plugin system
 call plug#end()
@@ -140,23 +141,6 @@ set linebreak
 set shortmess=atI
 
 " END general config
-
-" --------------------------------------------------
-
-" START theming config
-
-set background=dark
-
-" hopefully fix these horrible colors
-set termguicolors
-
-" automatch our terminal theme in vim
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-
-" END theming config
 
 " --------------------------------------------------
 
@@ -259,5 +243,25 @@ nnoremap <leader>u :UndotreeToggle<CR>
 autocmd BufWritePost * GitGutter
 
 " END git-gutter/fugtive config
+
+" --------------------------------------------------
+
+" START theming config
+
+set background=dark
+
+" hopefully fix these horrible colors
+set termguicolors
+
+" automatch our terminal theme in vim
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
+let g:lightline = {}
+let g:lightline.colorscheme = substitute(g:colors_name, '-', '_', '')
+
+" END theming config
 
 " --------------------------------------------------
