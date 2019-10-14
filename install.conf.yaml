@@ -1,0 +1,32 @@
+---
+- defaults:
+    shell:
+        stdin: true
+        stdout: true
+        stderr: true
+- clean: ['~']
+- create:
+    - ~/.task/hooks
+    - ~/.config/karabiner
+- shell:
+    -
+        command: if [ "$(uname)" = "Darwin" ]; then /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; fi
+        description: checking for darwin then installing homebrew
+    -
+      command: git submodule update --init --recursive
+      description: installing/updating submodules
+- link:
+    ~/.config/base16-shell:
+        path: config/base16-shell
+    ~/.config/karabiner/karabiner.json:
+        path: config/karabiner/karabiner.json
+    ~/.gitignore_global:
+    ~/.task/hooks/on-exit-sync.sh:
+        path: task/hooks/on-exit-sync.sh
+    ~/.vim:
+    ~/.vimrc:
+    ~/.zshrc:
+- shell:
+    -
+        command: curl -L git.io/antigen > antigen.zsh
+        description: installing/updating antigen
