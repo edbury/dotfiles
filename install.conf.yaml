@@ -27,6 +27,7 @@
     ~/.config/karabiner/karabiner.json:
         path: config/karabiner/karabiner.json
     ~/.gitignore_global:
+    ~/.stylelintrc.json:
     ~/.taskrc:
     ~/.tasks/hooks/on-exit-sync.sh:
         path: tasks/hooks/on-exit-sync.sh
