@@ -1,0 +1,12 @@
+#!/bin/sh
+if  command -v antibody >/dev/null 2>&1; then
+	echo "antibody already installed"
+else
+  {{ if eq .chezmoi.oi "android" -}}
+    curl -sfL git.io/antibody | sh -s - -b ${TERMUX_PREFIX}/bin
+  {{ else -}}
+    curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
+  {{ end -}}
+fi
+
+antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
