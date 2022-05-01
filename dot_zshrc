@@ -1,0 +1,61 @@
+# Chrome OS Only
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+    source /etc/profile.d/vte.sh
+fi
+
+if ! (( $+commands[pbcopy] )); then
+   alias pbcopy='xclip -selection clipboard'
+fi
+
+if ! (( $+commands[pbpaste] )); then
+   alias pbpaste='xclip -selection clipboard -o'
+fi
+
+# Browser
+
+if [[ "$OSTYPE" == darwin* ]]; then
+  export BROWSER='open'
+fi
+
+# Editors
+
+export EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='less'
+
+# Language
+
+if [[ -z "$LANG" ]]; then
+  export LANG='en_US.UTF-8'
+fi
+
+# disable zsh escapes
+DISABLE_MAGIC_FUNCTIONS=true
+
+# Import dotfile scripts
+export PATH="$HOME/bin:/usr/local/sbin:$PATH"
+
+# Antibody
+export ANTIBODY_HOME=~/.antibody
+ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-ohmyzsh-SLASH-ohmyzsh"
+source ~/.zsh_plugins.sh
+
+unsetopt AUTO_CD
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+  [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+    eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+
+## ls / ll
+alias ll='ls -lhFG'
+
+## Brew Bundle
+alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
+
+eval "$(rbenv init - zsh)"
+export NVM_DIR="$HOME/.nvm"
