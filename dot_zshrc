@@ -39,7 +39,7 @@ export PATH="$HOME/bin:/usr/local/sbin:$PATH"
 
 # Antibody
 export ANTIBODY_HOME=~/.antibody
-ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-ohmyzsh-SLASH-ohmyzsh"
+#ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-ohmyzsh-SLASH-ohmyzsh"
 source ~/.zsh_plugins.sh
 
 unsetopt AUTO_CD
