@@ -115,6 +115,8 @@ set linebreak
 " stifle interruptive prompts
 set shortmess=atI
 
+au BufRead,BufNewFile *.njk setfiletype html
+
 " spell-check markdown files and git commit messages
 autocmd FileType markdown setlocal spell
 autocmd FileType gitcommit setlocal spell
