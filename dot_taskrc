@@ -1,0 +1,42 @@
+# Sync
+data.location=~/.tasks
+
+# Modify "next" to remove BLOCKED items
+report.next.filter = status:pending limit:page -BLOCKED
+report.next.labels=ID,P,Description,Project,Tags,Due
+report.next.columns=id,priority,description,project,tags,due.relative
+
+verbose=blank,label,edit,special,sync
+
+# Urgency
+urgency.user.tag.next.coefficient           = 15.0 # +next tag
+urgency.due.coefficient                     = 12.0 # overdue or near due date
+urgency.blocking.coefficient                = 8.0 # blocking other tasks
+urgency.uda.priority.H.coefficient          = 6.0 # high Priority
+urgency.uda.priority.M.coefficient          = 3.9 # medium Priority
+urgency.uda.priority.L.coefficient          = 1.8 # low Priority
+urgency.scheduled.coefficient               = 5.0 # scheduled tasks
+urgency.active.coefficient                  = 4.0 # already started tasks
+urgency.age.coefficient                     = 2.0 # coefficient for age
+urgency.annotations.coefficient             = 0.0 # has annotations
+urgency.tags.coefficient                    = 0.0 # has tags
+urgency.project.coefficient                 = 0.0 # assigned to any project
+urgency.user.project.My Project.coefficient = 5.0 # assigned to project:"My Project"
+urgency.waiting.coefficient                 =-3.0 # waiting task
+urgency.blocked.coefficient                 =-5.0 # blocked by other tasks
+
+# Base16 Colors
+color=on
+
+taskd.certificate=/Users/edbury/.tasks/private.cert
+taskd.key=/Users/edbury/.tasks/private.key
+taskd.ca=/Users/edbury/.tasks/ca.cert.pem
+taskd.server=taskwarrior.inthe.am:53589
+taskd.credentials=inthe_am/edbury.enegren/3c1afae8-2147-4369-a37f-4d2a542b7079
+taskd.trust=ignore hostname
+uda.reviewed.type=date
+uda.reviewed.label=Reviewed
+report._reviewed.description=Tasksh review report.  Adjust the filter to your needs.
+report._reviewed.columns=uuid
+report._reviewed.sort=reviewed+,modified+
+report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
