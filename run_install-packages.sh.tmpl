@@ -1,4 +1,4 @@
-#! /bin/sh
+#!{{ lookPath "sh" }}
 if [ -d ~/.config/base16-shell ]
 then
   echo "base16 directory exists, skipping"
@@ -7,7 +7,6 @@ else
 fi
 
 {{ if eq .chezmoi.os "android" -}}
-pkg install fzf
-pkg install neovim
-pkg install tasksh
+pkg install -y zsh git fzf neovim ripgrep fd tree-sitter clang make rust termux-api tasksh
+[ -x "$HOME/.cargo/bin/tinty" ] || cargo install tinty
 {{ end -}}

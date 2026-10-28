@@ -6,11 +6,13 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 fi
 
 if ! (( $+commands[pbcopy] )); then
-   alias pbcopy='xclip -selection clipboard'
-fi
-
-if ! (( $+commands[pbpaste] )); then
-   alias pbpaste='xclip -selection clipboard -o'
+   if (( $+commands[termux-clipboard-set] )); then
+      alias pbcopy='termux-clipboard-set'
+      alias pbpaste='termux-clipboard-get'
+   else
+      alias pbcopy='xclip -selection clipboard'
+      alias pbpaste='xclip -selection clipboard -o'
+   fi
 fi
 
 # Browser
@@ -36,6 +38,7 @@ DISABLE_MAGIC_FUNCTIONS=true
 
 # Import dotfile scripts
 export PATH="$HOME/bin:/usr/local/sbin:$PATH"
+[[ -d "$HOME/.cargo/bin" ]] && export PATH="$HOME/.cargo/bin:$PATH"
 
 # Antibody
 export ANTIBODY_HOME=~/.antibody
@@ -57,5 +60,10 @@ alias ll='ls -lhFG'
 ## Brew Bundle
 alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
 
-eval "$(rbenv init - zsh)"
+(( $+commands[rbenv] )) && eval "$(rbenv init - zsh)"
 export NVM_DIR="$HOME/.nvm"
+
+# Termux doesn't keep terminal colors between sessions, so reapply tinty's last scheme
+if [[ "$PREFIX" == *com.termux* ]] && (( $+commands[tinty] )); then
+  tinty init
+fi
