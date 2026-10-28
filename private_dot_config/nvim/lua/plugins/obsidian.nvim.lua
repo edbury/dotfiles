@@ -1,4 +1,5 @@
-local vault = "~/Dropbox/vaults/garden"
+-- On the phone, Dropsync keeps the vault in shared storage
+local vault = require("config.termux") and "~/storage/shared/vaults/garden" or "~/Dropbox/vaults/garden"
 
 -- Frontmatter keys already in a note, read from its buffer or file.
 -- Returns nil for a note that doesn't exist yet, plus the buffer number if loaded.
