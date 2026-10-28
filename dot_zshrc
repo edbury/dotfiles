@@ -63,7 +63,10 @@ alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
 (( $+commands[rbenv] )) && eval "$(rbenv init - zsh)"
 export NVM_DIR="$HOME/.nvm"
 
-# Termux doesn't keep terminal colors between sessions, so reapply tinty's last scheme
-if [[ "$PREFIX" == *com.termux* ]] && (( $+commands[tinty] )); then
-  tinty init
+if [[ "$PREFIX" == *com.termux* ]]; then
+  # Dropsync keeps the vault in shared storage
+  alias vault='cd ~/storage/shared/vaults/garden && nvim'
+
+  # Termux doesn't keep terminal colors between sessions, so reapply tinty's last scheme
+  (( $+commands[tinty] )) && tinty init
 fi
