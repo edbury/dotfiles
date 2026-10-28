@@ -1,0 +1,2 @@
+# Colors come from tinty: `tinty apply <scheme>` writes themes/tinted-theming and reloads Ghostty
+theme = tinted-theming
