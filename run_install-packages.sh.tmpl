@@ -7,6 +7,6 @@ else
 fi
 
 {{ if eq .chezmoi.os "android" -}}
-pkg install -y zsh git fzf neovim ripgrep fd tree-sitter clang make rust termux-api tasksh
+pkg install -y zsh git fzf neovim ripgrep fd tree-sitter clang make rust termux-api tasksh lua-language-server inotify-tools
 [ -x "$HOME/.cargo/bin/tinty" ] || cargo install tinty
 {{ end -}}
