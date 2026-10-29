@@ -1,0 +1,30 @@
+# Spectrum: hue is priority; time and state override it.
+# A task due within the week with no priority takes the medium color.
+# Colors are terminal palette slots, so they follow the current tinty scheme.
+# Precedence: first listed wins.
+include no-color.theme
+rule.color.merge=yes
+rule.precedence.color=deleted,completed,overdue,due.today,active,scheduled,blocked,recurring,uda.priority.H,uda.priority.M,uda.priority.L,due,uda.priority.none,uda.priority.,tag.,project.,keyword.,blocking,tagged
+
+color.header=color20
+color.footnote=color8
+color.label=color20
+color.label.sort=color5
+
+# Time and state
+color.overdue=color1
+color.due.today=color16
+color.active=color2
+color.scheduled=color6
+color.blocked=color8
+color.recurring=color17
+color.due=color3
+
+# Priority (no priority is dimmest; the second line also catches tasks stored with an empty priority)
+color.uda.priority.H=color4
+color.uda.priority.M=color3
+color.uda.priority.L=color5
+color.uda.priority.none=color8
+color.uda.priority.=color8
+
+color.completed=color8

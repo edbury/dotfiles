@@ -4,3 +4,6 @@ data.location=~/.tasks
 # Kept out of this public repo; create it on each machine from WingTask's Settings > Taskwarrior Sync.
 include ~/.taskrc.sync
 news.version=3.5.0
+
+# Color scheme
+include ~/.config/task/tw-spectrum.theme
