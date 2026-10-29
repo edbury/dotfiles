@@ -1,0 +1,7 @@
+#!{{ lookPath "sh" }}
+# antidote is plain zsh, so the same install works on macOS and Termux
+if [ ! -d ~/.antidote ]; then
+  git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
+fi
+
+zsh -c 'source ~/.antidote/antidote.zsh && antidote bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh'

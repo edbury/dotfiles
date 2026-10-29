@@ -40,9 +40,7 @@ DISABLE_MAGIC_FUNCTIONS=true
 export PATH="$HOME/bin:/usr/local/sbin:$PATH"
 [[ -d "$HOME/.cargo/bin" ]] && export PATH="$HOME/.cargo/bin:$PATH"
 
-# Antibody
-export ANTIBODY_HOME=~/.antibody
-#ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-ohmyzsh-SLASH-ohmyzsh"
+# Plugins, bundled from ~/.zsh_plugins.txt by antidote
 source ~/.zsh_plugins.sh
 
 unsetopt AUTO_CD
