@@ -1,7 +1,7 @@
 -- render-markdown.nvim comes from the LazyVim markdown extra.
 -- Every markdown character stays visible: no icons or symbols drawn over markup,
 -- nothing concealed, and the same view in every mode and on the cursor line.
--- Heading bars and code block shading are the only things it adds.
+-- Heading text color and code block shading are the only things it adds.
 return {
   "MeanderingProgrammer/render-markdown.nvim",
   opts = {
@@ -12,6 +12,7 @@ return {
     },
     heading = {
       icons = {}, -- keep the # characters
+      backgrounds = {}, -- no colored bar behind headings
       sign = false,
     },
     code = {
