@@ -3,3 +3,4 @@ data.location=~/.tasks
 # WingTask sync (sync.server.url, sync.server.client_id, sync.encryption_secret).
 # Kept out of this public repo; create it on each machine from WingTask's Settings > Taskwarrior Sync.
 include ~/.taskrc.sync
+news.version=3.5.0
