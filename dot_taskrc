@@ -10,4 +10,4 @@ include ~/.config/task/tw-spectrum.theme
 
 # Default report
 report.next.columns=id,description,due.relative,priority,tags,entry.age
-report.next.labels=ID,Description,Due,Priority,Tag,Age
+report.next.labels=ID,Description,Due,P,Tag,Age
